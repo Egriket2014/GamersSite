@@ -9,5 +9,6 @@ public class GamersSiteApplication {
     public static void main(String[] args) {
         SpringApplication.run(GamersSiteApplication.class, args);
     }
+    String str = "xuy";
 
 }
