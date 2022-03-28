@@ -10,5 +10,4 @@ public class GamersSiteApplication {
         SpringApplication.run(GamersSiteApplication.class, args);
     }
     String str = "xuy";
-
 }
