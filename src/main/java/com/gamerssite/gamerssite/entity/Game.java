@@ -29,16 +29,13 @@ public class Game {
     private Double rating;
 
     @Column(name = "link")
-    private String linkOnSteam;
+    private String link;
 
     @Column(name = "image")
     private String image;
 
     @Column(name = "early_access")
     private Boolean isEarlyAccess;
-
-    @Column(name = "last_patch")
-    private Date lastPatch;
 
     @Column(name = "price")
     private Integer price;
@@ -49,12 +46,26 @@ public class Game {
     @Column(name = "min_processor")
     private String minProcessor;
 
-    @Column(name = "min_memory")
-    private String minMemory;
+    @Column(name = "min_ram")
+    private String minRam;
 
     @Column(name = "disk_memory")
     private String diskMemory;
 
     @ManyToMany(mappedBy = "games")
     private Set<User> users;
+
+    @Override
+    public String toString() {
+        return "Title = " + title + "\n" +
+                "Rating = " + rating + "\n" +
+                "Link = " + link + "\n" +
+                "Image = " + image + "\n" +
+                "IsEarlyAccess = " + isEarlyAccess + "\n" +
+                "Price = " + price + "\n" +
+                "MinGraphicCard = " + minGraphicCard + "\n" +
+                "MinProcessor = " + minProcessor + "\n" +
+                "MinRam = " + minRam + "\n" +
+                "DiskMemory = " + diskMemory + "\n";
+    }
 }
