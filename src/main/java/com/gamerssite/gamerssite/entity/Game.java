@@ -31,6 +31,9 @@ public class Game {
     @Column(name = "link")
     private String linkOnSteam;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "early_access")
     private Boolean isEarlyAccess;
 
@@ -39,6 +42,18 @@ public class Game {
 
     @Column(name = "price")
     private Integer price;
+
+    @Column(name = "min_videocard")
+    private String minGraphicCard;
+
+    @Column(name = "min_processor")
+    private String minProcessor;
+
+    @Column(name = "min_memory")
+    private String minMemory;
+
+    @Column(name = "disk_memory")
+    private String diskMemory;
 
     @ManyToMany(mappedBy = "games")
     private Set<User> users;
