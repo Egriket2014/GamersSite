@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>GAME ADD</title>
 </head>
 <body>
-
+<form th:method="POST" th:action="@{/game-add}" th:object="${newGameUrl}">
+    <label for="link">Link to game page on steam: </label>
+    <input type="text" th:field="*{url}" id="link"/>
+    <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${gameAddError}" th:text="${gameAddError}"></div>
+    <br/>
+    <input type="submit" value="Add game"/>
+</form>
 </body>
 </html>

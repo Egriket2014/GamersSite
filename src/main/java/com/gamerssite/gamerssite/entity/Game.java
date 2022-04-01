@@ -1,12 +1,13 @@
 package com.gamerssite.gamerssite.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.gamerssite.gamerssite.mappers.game.GameDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonDeserialize(using = GameDeserializer.class)
 public class Game {
 
     @Id
@@ -25,6 +27,9 @@ public class Game {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "steam_id")
+    private Long steamId;
+
     @Column(name = "rating")
     private Double rating;
 
@@ -33,9 +38,6 @@ public class Game {
 
     @Column(name = "image")
     private String image;
-
-    @Column(name = "early_access")
-    private Boolean isEarlyAccess;
 
     @Column(name = "price")
     private Integer price;
@@ -58,10 +60,10 @@ public class Game {
     @Override
     public String toString() {
         return "Title = " + title + "\n" +
+                "Steam ID = " + steamId + "\n" +
                 "Rating = " + rating + "\n" +
                 "Link = " + link + "\n" +
                 "Image = " + image + "\n" +
-                "IsEarlyAccess = " + isEarlyAccess + "\n" +
                 "Price = " + price + "\n" +
                 "MinGraphicCard = " + minGraphicCard + "\n" +
                 "MinProcessor = " + minProcessor + "\n" +

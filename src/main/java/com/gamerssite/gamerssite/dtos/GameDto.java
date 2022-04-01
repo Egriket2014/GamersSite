@@ -12,7 +12,6 @@ public class GameDto {
     private Double rating;
     private String link;
     private String image;
-    private Boolean isEarlyAccess;
     private Integer price;
     private String minGraphicCard;
     private String minProcessor;
