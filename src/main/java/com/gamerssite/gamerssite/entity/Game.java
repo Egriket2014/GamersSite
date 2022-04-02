@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "graphic_cards")
+@Table(name = "games")
 @Data
 @Builder
 @NoArgsConstructor

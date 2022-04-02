@@ -2,7 +2,11 @@ package com.gamerssite.gamerssite.dtos;
 
 import lombok.Data;
 
+import javax.validation.constraints.Pattern;
+
 @Data
 public class UrlDto {
-    public String url;
+
+    @Pattern(regexp = "https://store.steampowered.com/app/\\d+/.+/", message = "Invalid link")
+    private String url;
 }

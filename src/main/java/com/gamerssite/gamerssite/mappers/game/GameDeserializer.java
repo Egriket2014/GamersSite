@@ -11,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.springframework.boot.jackson.JsonComponent;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @JsonComponent
 public class GameDeserializer extends JsonDeserializer<Game> {
@@ -19,40 +20,48 @@ public class GameDeserializer extends JsonDeserializer<Game> {
     public Game deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         JsonNode data = node.findPath("data");
+        try {
+            String title = data.get("name").asText();
+            Long steamId = data.get("steam_appid").asLong();
+            String image = data.get("header_image").asText();
+            Integer price = data.get("is_free").asBoolean() ? 0 : data.findPath("price_overview").get("initial").asInt() / 100;
 
-        String title = data.get("name").asText();
-        Long steamId = data.get("steam_appid").asLong();
-        String image = data.get("header_image").asText();
-        Integer price = data.findPath("price_overview").get("initial").asInt() / 100;
+            String minReqHtml = data.findPath("pc_requirements").get("minimum").asText();
 
-        String minReqHtml = data.findPath("pc_requirements").get("minimum").asText();
+            String graphicCard = getComponentFromHtmlByName(minReqHtml, "Graphics")
+                    .orElse(null);
+            String processor = getComponentFromHtmlByName(minReqHtml, "Processor")
+                    .orElse(null);
+            String ram = getComponentFromHtmlByName(minReqHtml, "Memory")
+                    .orElse(null);
+            String diskMem = getComponentFromHtmlByName(minReqHtml, "Storage")
+                    .orElse(getComponentFromHtmlByName(minReqHtml, "Hard Drive")
+                            .orElse(null));
 
-        String graphicCard = getComponentFromHtmlByName(minReqHtml, "Graphics");
-        String processor = getComponentFromHtmlByName(minReqHtml, "Processor");
-        String ram = getComponentFromHtmlByName(minReqHtml, "Memory");
-        String diskMem = getComponentFromHtmlByName(minReqHtml, "Storage");
+            return Game.builder()
+                    .title(title)
+                    .steamId(steamId)
+                    .rating(0.0)
+                    .link(null)
+                    .image(image)
+                    .price(price)
+                    .minGraphicCard(graphicCard)
+                    .minProcessor(processor)
+                    .minRam(ram)
+                    .diskMemory(diskMem)
+                    .build();
 
-        return Game.builder()
-                .title(title)
-                .steamId(steamId)
-                .rating(0.0)
-                .link(null)
-                .image(image)
-                .price(price)
-                .minGraphicCard(graphicCard)
-                .minProcessor(processor)
-                .minRam(ram)
-                .diskMemory(diskMem)
-                .build();
+        } catch (NullPointerException e) {
+            throw new IOException();
+        }
     }
 
-    private String getComponentFromHtmlByName(String html, String componentName) {
+    private Optional<String> getComponentFromHtmlByName(String html, String componentName) {
         Document page = Jsoup.parse(html);
         return page.getElementsByTag("li").stream()
                 .filter(element -> element.getElementsByTag("strong")
                         .text().equals(componentName + ":"))
                 .findFirst()
-                .map(element -> element.text().replaceAll(componentName + ":", ""))
-                .orElse(null);
+                .map(element -> element.text().replaceAll(componentName + ":", ""));
     }
 }

@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>GAME ADD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<form th:method="POST" th:action="@{/game-add}" th:object="${newGameUrl}">
-    <label for="link">Link to game page on steam: </label>
-    <input type="text" th:field="*{url}" id="link"/>
+<form th:method="POST" th:action="@{/game/add}" th:object="${newGameUrl}">
+    <label for="url">Link to game page on steam: </label>
+    <input type="text" th:field="*{url}" id="url"/>
+    <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${#fields.hasErrors('url')}" th:errors="*{url}" ></div>
     <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${gameAddError}" th:text="${gameAddError}"></div>
+    <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${success}" th:text="${success}"></div>
     <br/>
-    <input type="submit" value="Add game"/>
+    <button type="submit">Add game</button>
 </form>
 </body>
 </html>
