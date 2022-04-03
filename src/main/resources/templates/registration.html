@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../static/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="login-form">
+        <form role="form" th:method="POST" th:action="@{/registration}" th:object="${userRegDto}">
+            <h2 class="text-center">Registration</h2>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="text" id="login" th:field="*{login}" placeholder="Login" class="form-control" minlength="2" maxlength="50" autofocus required>
+                </div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${userErrorLogin}" th:text="${userErrorLogin}"></div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${#fields.hasErrors('login')}" th:errors="*{login}" ></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="password" th:field="*{password}" id="password" placeholder="Password" class="form-control" required>
+                </div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="password" th:field="*{confirmPassword}" id="confirmPassword" placeholder="Confirm password" class="form-control" required>
+                </div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${userErrorPassword}" th:text="${userErrorPassword}"></div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" ></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="email" id="email" th:field="*{email}" placeholder="Email" class="form-control" required>
+                </div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${userErrorEmail}" th:text="${userErrorEmail}"></div>
+                <div class="alert alert-danger" role="alert" style="margin: 10px" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

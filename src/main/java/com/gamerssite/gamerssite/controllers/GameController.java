@@ -1,6 +1,6 @@
 package com.gamerssite.gamerssite.controllers;
 
-import com.gamerssite.gamerssite.dtos.UrlDto;
+import com.gamerssite.gamerssite.dtos.game.UrlDto;
 import com.gamerssite.gamerssite.services.game.GameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.gamerssite.gamerssite.mappers.game;
 
-import com.gamerssite.gamerssite.dtos.GameDto;
+import com.gamerssite.gamerssite.dtos.game.GameDto;
 import com.gamerssite.gamerssite.entity.Game;
 import com.gamerssite.gamerssite.mappers.IMapper;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.gamerssite.gamerssite.dtos;
+package com.gamerssite.gamerssite.dtos.game;
 
 import lombok.Data;
 

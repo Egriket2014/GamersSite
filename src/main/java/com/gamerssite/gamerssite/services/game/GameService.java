@@ -1,7 +1,7 @@
 package com.gamerssite.gamerssite.services.game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gamerssite.gamerssite.dtos.GameDto;
+import com.gamerssite.gamerssite.dtos.game.GameDto;
 import com.gamerssite.gamerssite.entity.Game;
 import com.gamerssite.gamerssite.mappers.game.GameMapper;
 import com.gamerssite.gamerssite.repositories.GameRepository;

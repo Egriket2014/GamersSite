@@ -33,8 +33,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    //@Column(name = "avatar_url")
-    //private String avatar;
+    @Column(name = "avatar_url")
+    private String avatar;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -47,19 +47,19 @@ public class User {
 
     /////////    PC     /////////
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "graphic_card_id")
     private GraphicCard graphicCard;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "memory_id")
     private Memory memory;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "processor_id")
     private Processor processor;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "monitor_id")
     private Monitor monitor;
 }
