@@ -24,9 +24,11 @@ public class GraphicCard {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "memory")
-    private Integer memory;
-
     @OneToMany(mappedBy = "graphicCard", cascade = CascadeType.ALL)
     private Set<User> userSet;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

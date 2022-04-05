@@ -24,12 +24,11 @@ public class Processor {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "core_number")
-    private Integer coreNumber;
-
-    @Column(name = "frequency")
-    private Double frequency;
-
     @OneToMany(mappedBy = "processor", cascade = CascadeType.ALL)
     private Set<User> userSet;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

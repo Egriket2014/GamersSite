@@ -44,6 +44,13 @@ public class User {
     )
     private Set<Game> games;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_friend",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "friend_id", referencedColumnName = "id")}
+    )
+    private Set<User> friends;
 
     /////////    PC     /////////
 

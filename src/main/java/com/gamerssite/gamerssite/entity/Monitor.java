@@ -22,11 +22,13 @@ public class Monitor {
     private Long id;
 
     @Column(name = "resolution")
-    private String resolution;
-
-    @Column(name = "frequency")
-    private Integer frequency;
+    private String name;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL)
     private Set<User> userSet;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

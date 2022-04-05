@@ -22,8 +22,13 @@ public class Memory {
     private Long id;
 
     @Column(name = "capacity")
-    private Integer capacity;
+    private String name;
 
     @OneToMany(mappedBy = "memory", cascade = CascadeType.ALL)
     private Set<User> userSet;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
