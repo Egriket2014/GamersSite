@@ -63,7 +63,7 @@ public class Game {
                 "Steam ID = " + steamId + "\n" +
                 "Rating = " + rating + "\n" +
                 "Link = " + link + "\n" +
-                "Image = " + image + "\n" +
+                "UserPicture = " + image + "\n" +
                 "Price = " + price + "\n" +
                 "MinGraphicCard = " + minGraphicCard + "\n" +
                 "MinProcessor = " + minProcessor + "\n" +

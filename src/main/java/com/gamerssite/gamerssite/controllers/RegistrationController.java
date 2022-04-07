@@ -1,7 +1,7 @@
 package com.gamerssite.gamerssite.controllers;
 
 import com.gamerssite.gamerssite.dtos.user.UserRegistrationDto;
-import com.gamerssite.gamerssite.services.user.UserService;
+import com.gamerssite.gamerssite.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

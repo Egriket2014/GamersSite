@@ -1,14 +1,19 @@
 package com.gamerssite.gamerssite.controllers;
 
 import com.gamerssite.gamerssite.dtos.user.UserDto;
-import com.gamerssite.gamerssite.services.user.UserService;
+import com.gamerssite.gamerssite.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -37,4 +42,17 @@ public class UserController {
                                     Model model) {
         return userService.updateUserController(userDto, multipartFile, bindingResult, model);
     }
+
+//    @GetMapping("/displayUserPicture")
+//    public void showImage(@RequestParam("id") Long userId,
+//                          HttpServletResponse response) {
+//        userService.displayUserPictureByUserId(userId, response);
+//    }
+
+//    @GetMapping("/displayUserPicture/{userId}")
+//    public Resource showImage(@PathVariable("userId") Long userId) {
+//        byte[] image = userService.getUserById(userId).getPicture();
+//        if (image == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        return new ByteArrayResource(image);
+//    }
 }

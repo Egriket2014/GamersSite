@@ -11,7 +11,7 @@ public class UserDto {
 
     private long id;
     private String name;
-    private String avatar;
+    private String picture;
 
     @Email(message = "Email should be valid")
     private String email;

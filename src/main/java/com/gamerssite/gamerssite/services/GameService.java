@@ -1,4 +1,4 @@
-package com.gamerssite.gamerssite.services.game;
+package com.gamerssite.gamerssite.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gamerssite.gamerssite.dtos.game.GameDto;

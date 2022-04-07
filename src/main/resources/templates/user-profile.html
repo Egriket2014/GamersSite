@@ -5,7 +5,7 @@
     <title>Profile</title>
 </head>
 <body>
-
+<img th:src="@{'/img/' + ${userDto.picture}}" alt="">
 <div class="row" style="margin-top: 5px" id="profile">
     <div class="col-md-9 col-lg-9">
         <table class="table">
@@ -13,10 +13,6 @@
             <tr>
                 <td>Name:</td>
                 <td th:text="${userDto.name}"></td>
-            </tr>
-            <tr>
-                <td>Avatar:</td>
-                <td th:text="${userDto.avatar}"></td>
             </tr>
             <tr>
                 <td>Graphic card:</td>

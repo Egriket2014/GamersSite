@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -33,8 +34,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "avatar_url")
-    private String avatar;
+    @Column(name = "user_picture_path")
+    private String picture;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
